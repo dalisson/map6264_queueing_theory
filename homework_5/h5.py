@@ -21,7 +21,7 @@ def exp_times(x):
 arrival = partial(exp_times, x = 1/0.8) 
 
 
-def simulation(n_arrivals, mu, k, s):
+def simulation(n_arrivals, tao, k, s):
    
     c = [0] * s
     a = 0
@@ -30,7 +30,7 @@ def simulation(n_arrivals, mu, k, s):
     queue = [0] * k
     service_time = partial(exp_times, x = mu)
     lost_customers = 0
-    for index in range(n_arrivals):
+    for _ in range(n_arrivals):
         ia =  arrival() #inter arrival time
         a = a + ia
         x = service_time() #service time
@@ -70,4 +70,4 @@ def simulation(n_arrivals, mu, k, s):
     #    print('E(W>%s)' % i, (w > i).mean())
 
 if __name__ == '__main__':
-    simulation(100000, 1, 1, 1)
+    simulation(n_arrivals = 100000, tao=1, k=1, s=1)
