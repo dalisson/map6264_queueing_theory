@@ -28,7 +28,7 @@ def simulation(n_arrivals, tao, k, s):
     sx = 0
     w = []
     queue = [0] * k
-    service_time = partial(exp_times, x = mu)
+    service_time = partial(exp_times, x = tao)
     lost_customers = 0
     for _ in range(n_arrivals):
         ia =  arrival() #inter arrival time
