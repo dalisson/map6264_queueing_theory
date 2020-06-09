@@ -27,7 +27,7 @@ def simulation(n_arrivals, tao, k, s):
     a = 0
     sx = 0
     w = []
-    queue = [0] * k
+    queue = np.array([0] * k)
     service_time = partial(exp_times, x = tao)
     lost_customers = 0
     for _ in range(n_arrivals):
@@ -46,11 +46,9 @@ def simulation(n_arrivals, tao, k, s):
             lost_customers += 1
             sx -= x
         else:
-            q = 0
-            for i in range(k):
-                q = i if queue[i] < queue[q] else q
-            if queue[q] < a:
-                queue[q] = c[j]
+            queue.sort()
+            if queue[0] < a:
+                queue[0] = c[j]
                 w.append(c[j] - a) 
                 c[j] += x
             else:
@@ -70,4 +68,4 @@ def simulation(n_arrivals, tao, k, s):
     #    print('E(W>%s)' % i, (w > i).mean())
 
 if __name__ == '__main__':
-    simulation(n_arrivals = 100000, tao=1, k=1, s=1)
+    simulation(n_arrivals = 100000, tao=1, k=100000, s=1)
