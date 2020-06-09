@@ -69,4 +69,4 @@ def simulation(n_arrivals, mu, k, s):
     #    print('E(W>%s)' % i, (w > i).mean())
 
 if __name__ == '__main__':
-    simulation(100000, 0.8, 1, 1)
+    simulation(100000, 1, 1, 1)
