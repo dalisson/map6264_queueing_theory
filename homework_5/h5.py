@@ -26,7 +26,7 @@ def simulation(n_arrivals, mu, k, s):
     c = [0] * s
     a = 0
     sx = 0
-    w = [0] * n_arrivals
+    w = []
     queue = [0] * k
     service_time = partial(exp_times, x = mu)
     lost_customers = 0
@@ -41,6 +41,7 @@ def simulation(n_arrivals, mu, k, s):
             j = i if c[i] < c[j] else j
         if c[j] <= a:
             c[j] = a + x
+            w.append(0)
         elif k == 0:
             lost_customers += 1
             sx -= x
@@ -50,7 +51,7 @@ def simulation(n_arrivals, mu, k, s):
                 q = i if queue[i] < queue[q] else q
             if queue[q] < a:
                 queue[q] = c[j]
-                w[index] = (c[j] - a) # divide by 2.4 to calculate fractions of service time waited
+                w.append(c[j] - a) 
                 c[j] += x
             else:
                 lost_customers += 1
