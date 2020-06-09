@@ -1,2 +1,2 @@
 # map6264_queueing_theory
-FAU map6264 queueing theory class simulations
+this repository contains code for FAU map6264 queueing theory course as taught by professor Robert B. Cooper
