@@ -21,11 +21,11 @@ arrival = partial(exp_times, x = 1./4)
 service_time = partial(exp_times, x = 2.4) 
 
 if __name__ == '__main__':
-    c = [0] * 1
+    c = [0] * 10
     s = 1
     a = 0
     sx = 0
-    d = 10000
+    d = 100000
     w = [0] * d
     for index in range(d):
         ia =  arrival() #inter arrival time
